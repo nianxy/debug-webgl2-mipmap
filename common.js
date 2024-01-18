@@ -11,7 +11,7 @@ const vs = `
   }
 `;
 
-const fs = `
+const fs = (useSrgb) => `
   varying highp vec2 vTextureCoord;
   precision mediump float;
   uniform sampler2D uSampler;
@@ -21,8 +21,7 @@ const fs = `
   }
 
   void main(void) {
-    // gl_FragColor = texture2D(uSampler, vTextureCoord);
-    gl_FragColor = LinearTosRGB(texture2D(uSampler, vTextureCoord));
+    gl_FragColor = ${useSrgb?"LinearTosRGB(texture2D(uSampler, vTextureCoord))":"texture2D(uSampler, vTextureCoord)"};
   }
 `;
 
@@ -61,7 +60,7 @@ function createRenderer(
   gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 
   const vertexShader = createShader(gl, vs, gl.VERTEX_SHADER);
-  const fragmentShader = createShader(gl, fs, gl.FRAGMENT_SHADER);
+  const fragmentShader = createShader(gl, fs(useSrgb), gl.FRAGMENT_SHADER);
 
   const program = gl.createProgram();
   gl.attachShader(program, vertexShader);
