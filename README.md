@@ -1,9 +1,11 @@
 # debug-webgl2-mipmap
 
-在WebGL2下，sRGB贴图在生成Mipmap时，如果`TEXTURE_MIN_FILTER`设置为`LINEAR_MIPMAP_LINEAR`，贴图中明暗对比越强烈的区域，生成的Mipmap相应区域就会越亮，Mipmap Level越高，现象越明显。
+在WebGL2下，sRGB贴图在生成Mipmap时，如果`TEXTURE_MIN_FILTER`设置为`LINEAR_MIPMAP_LINEAR`，贴图中明暗对比越强烈的区域，生成的Mipmap相应区域就会越亮。Mipmap Level越高，现象越明显。
+
+> `LINEAR_MIPMAP_LINEAR`生成的Mipmap图像清晰度最好
 
 `res`目录下的几张贴图：
-- `img1.png`: 灰度纯色贴图
+- `img1.png`: 灰度纯色贴图，没有变亮现象
 - `img2.png`: 花纹贴图，变亮效果十分明显
 - `img3.png`: 测试用文字贴图，文字区域变亮明显
 - `img4.png`: 非密集花纹贴图，变亮不明显
