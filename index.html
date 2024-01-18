@@ -1,0 +1,21 @@
+<canvas id='canvas' style="width: 500px; height:500px;"></canvas>
+<img id="tex" crossorigin="anonymous" />
+<script src="./common.js"></script>
+<script>
+  const texImage = document.getElementById('tex');
+  texImage.onerror = (err) => {
+    console.error('Failed to load image', err.message)
+  }
+  console.log('starting to load tex')
+  texImage.src = "https://pulsar.oppenlab.com/res/9a/14/9385d1dd640b2aa6c6cf41d884f8149a.png"
+  texImage.onload = () => {
+    console.log('tex loaded')
+    const renderer = window.createRenderer(
+      document.getElementById('canvas'),
+      500 * window.devicePixelRatio,
+      500 * window.devicePixelRatio,
+      {useGL2: true, repeat: 1, mipmap:true, srgb: true}
+    );
+    renderer(texImage);
+  }
+</script>
