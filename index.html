@@ -4,7 +4,7 @@
 <script>
   const size = 500;
   const repeat = 5;
-  const imgurl = 'img2.png';
+  const imgurl = 'res/img4.png';
 
   const texImage = document.getElementById('tex');
   texImage.onerror = (err) => {
@@ -23,7 +23,7 @@
       document.getElementById('canvas'),
       size * window.devicePixelRatio,
       size * window.devicePixelRatio,
-      {useGL2: true, repeat, mipmap:true, srgb: false}
+      {useGL2: true, repeat, mipmap:true, srgb: true}
     );
     renderer(texImage);
   }
